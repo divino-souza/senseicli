@@ -13,6 +13,9 @@
   - simplicidade orientada a MVP
 - Adicionadas regras de artefatos em portugues
 - Adicionada exigencia de changelog por feature concluida
+- Definida stack padrao do projeto como TypeScript/Node.js
+- Definida exigencia de testes unitarios basicos para features importantes do
+  fluxo principal
 
 ### Modelagem da feature principal
 

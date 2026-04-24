@@ -28,6 +28,16 @@ O projeto foi definido com estas premissas centrais:
 - subagentes com contrato estruturado
 - aprovacao antes de executar impacto entre projetos
 
+## Stack Definida
+
+A stack padrao de implementacao do projeto foi definida como:
+
+- TypeScript
+- Node.js
+
+Essa decisao vale para a CLI e para a logica principal de orquestracao, salvo
+mudanca futura explicitamente registrada.
+
 ## Fonte de Verdade Atual
 
 Os arquivos mais importantes no momento sao:
@@ -80,6 +90,25 @@ Ela cobre:
 - Se um projeto impactado ficar indisponivel, ele deve ser marcado como
   bloqueado ou indisponivel e a run segue com os demais quando ainda houver
   valor.
+- Features importantes do fluxo principal devem receber testes unitarios basicos
+  desde o MVP para proteger comportamento essencial.
+
+## Politica de Testes do MVP
+
+No estado atual do projeto, a prioridade de teste e:
+
+- testar regras centrais
+- testar persistencia local
+- testar contratos estruturados
+- testar ordenacao de eventos
+- testar diagnostico de run
+- testar fluxos minimos de CLI por feature
+
+Por enquanto, fica fora do foco inicial:
+
+- integracao real com providers externos
+- comportamento completo de subprocessos complexos
+- testes end-to-end grandes antes da base estar estavel
 
 ## Decomposicao Atual
 
@@ -128,4 +157,3 @@ Ao iniciar uma nova sessao:
 Abrir a primeira spec filha da decomposicao:
 
 - `Workspace Registry And Relationship Map`
-

@@ -92,6 +92,8 @@ LLM implicitly remembering prior turns.
 The project MUST optimize for a maintainable MVP:
 
 - Features MUST state what problem they solve for the operator running the CLI.
+- TypeScript em Node.js e a stack padrao do projeto para implementacao da CLI e
+  de sua logica de orquestracao, salvo excecao futura explicitamente aprovada.
 - Plans MUST distinguish core orchestration logic from provider adapters and UX
   concerns.
 - Features involving multiple projects MUST define how run state, per-project
@@ -125,6 +127,13 @@ The project MUST optimize for a maintainable MVP:
 - The project MUST maintain a changelog that reflects the current delivered
   state. Each completed feature MUST add a changelog entry summarizing what was
   delivered, relevant behavioral changes, and any notable follow-up constraints.
+- Features importantes do fluxo principal MUST incluir testes unitarios basicos
+  para proteger comportamento essencial e reduzir regressao durante a evolucao
+  do MVP.
+- O MVP MUST priorizar testes de regras centrais, persistencia local, contratos,
+  eventos e fluxos minimos de CLI. Integracoes reais com providers externos,
+  comportamento completo de subprocessos complexos e testes end-to-end amplos
+  DEVEM ser adiados ate que a base do projeto esteja estavel.
 
 ## Development Workflow
 
@@ -135,6 +144,9 @@ The project MUST optimize for a maintainable MVP:
   CLI UX, MVP scope, execution safety, and state continuity.
 - `speckit-tasks` MUST organize work so the MVP path can be built and validated
   without waiting for speculative enhancements.
+- Ao iniciar a implementacao de uma feature, o trabalho MUST ocorrer em uma
+  branch dedicada com nome alinhado ao nome da implementacao ou da feature
+  ativa.
 - Feature completion MUST include a changelog update before the work is treated
   as done.
 - Multi-project features MUST define:
@@ -167,6 +179,12 @@ Compliance review expectations:
   unnecessary architecture.
 - Tasks MUST preserve incremental delivery, avoid speculative infrastructure,
   and include persistence/handoff work when agent coordination is in scope.
+- Implementacoes centrais em TypeScript/Node.js MUST incluir cobertura unitaria
+  basica para regras de negocio e fluxos criticos que possam ser validados sem
+  depender de providers externos.
+- A estrategia de teste do MVP MUST evitar acoplamento precoce a providers
+  externos ou fluxos end-to-end extensos quando testes locais menores ja forem
+  suficientes para validar a etapa atual.
 - Implementations MUST surface errors and destructive behavior clearly.
 - Orchestration flows MUST not treat context-seeking replies as successful
   project analysis outputs.
@@ -178,5 +196,7 @@ Compliance review expectations:
   being discarded immediately by default.
 - Delivered features MUST be traceable through changelog entries written in
   Portuguese.
+- O inicio da implementacao deve trocar para a branch da feature, mas MUST NOT
+  implicar commit automatico.
 
 **Version**: 1.1.0 | **Ratified**: 2026-04-23 | **Last Amended**: 2026-04-23
